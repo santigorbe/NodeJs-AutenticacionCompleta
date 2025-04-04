@@ -1,0 +1,17 @@
+version: '3.8'  # Versión del archivo docker-compose
+
+services:
+  mysql:
+    image: mysql:latest  # Usa la última imagen de MySQL
+    container_name: mysql-local  # Nombre del contenedor
+    environment:
+      MYSQL_ROOT_PASSWORD: mi_contraseña  # Contraseña para el usuario root
+      MYSQL_DATABASE: mi_base_de_datos  # Nombre de la base de datos inicial
+    ports:
+      - "3306:3306"  # Expone el puerto 3306 para acceder a MySQL
+    volumes:
+      - mysql-data:/var/lib/mysql  # Persistencia de datos (opcional)
+    restart: always  # El contenedor se reiniciará automáticamente si se cae
+
+volumes:
+  mysql-data:  # Definir volumen para persistencia de datos
